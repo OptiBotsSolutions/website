@@ -18,7 +18,7 @@
             background-color: white;
             z-index: 9999;
             opacity: 1;
-            pointer-events: none; /* Disable interactions with the overlay */
+            pointer-events: none; /* Disable interactions with the overlay initially */
             transition: opacity 1s ease-in-out; /* Fade effect */
         }
 
@@ -33,10 +33,10 @@
             opacity: 1;
         }
 
-        /* Fade-out effect for overlay when page loads */
+        /* Fade-out effect for overlay after form submission */
         .fade-overlay.fade-out {
             opacity: 0;
-            pointer-events: auto; /* Allow interactions after fade-out */
+            pointer-events: none; /* Allow interactions after fade-out */
         }
     </style>
 </head>
