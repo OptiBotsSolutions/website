@@ -6,8 +6,41 @@
     <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
     <link rel="stylesheet" href="styles.css">
     <title>OptiBots Solutions</title>
+
+    <style>
+        /* Full-page overlay with white background for fade effect */
+        .fade-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            z-index: 9999;
+            opacity: 1;
+            transition: opacity 2s ease-in-out;
+        }
+
+        /* Initially hide the page content with opacity */
+        body {
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+        }
+
+        /* Show the content after the page has loaded */
+        body.loaded {
+            opacity: 1;
+        }
+
+        /* Fade out effect for overlay when page loads */
+        .fade-overlay.fade-out {
+            opacity: 0;
+        }
+    </style>
 </head>
 <body>
+    <div class="fade-overlay" id="fadeOverlay"></div>
+
     <header>
         <div class="logo">
             <img src="./images/logo.png" alt="OptiBots Solutions Logo">
@@ -32,11 +65,27 @@
     </section>
 
     <script>
-        document.querySelector('form').addEventListener('submit', function(event) {
-            document.body.style.cursor = 'wait';
+        // Add fade-in effect when the page loads
+        window.addEventListener('load', function() {
+            document.body.classList.add('loaded');
             setTimeout(function() {
-                window.location.href = 'thank-you.html';
-            }, 5000);
+                document.getElementById('fadeOverlay').classList.add('fade-out');
+            }, 100); // Allow the page to load and fade-in before the overlay starts fading out
+        });
+
+        // Handle form submission and page transition after 5 seconds
+        document.querySelector('form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form from submitting immediately
+            
+            // Wait for 5 seconds, then redirect and fade-out overlay
+            setTimeout(function() {
+                // Fade the page back into white before redirecting
+                document.getElementById('fadeOverlay').classList.add('fade-out');
+                setTimeout(function() {
+                    // Redirect to the thank you page after the overlay fade
+                    window.location.href = 'thank-you.html';
+                }, 2000); // Wait for 2 seconds after fading out overlay
+            }, 5000); // Wait for 5 seconds
         });
     </script>
 </body>
