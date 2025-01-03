@@ -32,9 +32,17 @@
 
     <script>
         document.querySelector('form').addEventListener('submit', function(event) {
+            // Prevent the default form submission
+            event.preventDefault();
+    
+            // Change the cursor to loading (wait) before submission
+            document.body.style.cursor = 'wait';
+    
+            // Allow the form to submit and then redirect after 2 seconds
             setTimeout(function() {
-                window.location.href = 'thank-you.html';
-            }, 2000);
+                // Redirect to thank you page after form submission
+                window.location.href = 'thank-you.html'; // Replace with your own thank you page URL
+            }, 2000); // 2000 milliseconds = 2 seconds
         });
     </script>
 </body>
