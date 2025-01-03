@@ -52,7 +52,7 @@
         <div class="contact-container">
             <h2>Contact Us</h2>
             <p>We'd love to hear from you. Fill out the form below to get in touch.</p>
-            <form action="https://forms.hubspot.com/uploads/form/v2/48757162/c8b6c5f6-6254-47ce-86d0-e9963913e429" method="POST">
+            <form id="contactForm" action="https://forms.hubspot.com/uploads/form/v2/48757162/c8b6c5f6-6254-47ce-86d0-e9963913e429" method="POST">
                 <input name="firstname" type="text" placeholder="Your Name &nbsp;*" required>
                 <input name="email" type="email" placeholder="Your Email &nbsp;*" required>
                 <input name="mobilephone" type="tel" placeholder="Your Phone Number" pattern="^[0-9+\-]*$" title="Phone number must contain only numbers, +, and hyphens">
@@ -75,18 +75,17 @@
         });
 
         // Handle form submission and page transition after 5 seconds
-        document.querySelector('form').addEventListener('submit', function(event) {
+        document.querySelector('#contactForm').addEventListener('submit', function(event) {
             event.preventDefault(); // Prevent form from submitting immediately
-            
-            // Wait for 5 seconds, then redirect and fade-out overlay
+
+            // Fade the page content back into white before redirecting
+            document.getElementById('fadeOverlay').classList.add('fade-out');
+
+            // Wait for 5 seconds, then redirect
             setTimeout(function() {
-                // Fade the page back into white before redirecting
-                document.getElementById('fadeOverlay').classList.add('fade-out');
-                setTimeout(function() {
-                    // Redirect to the thank you page after the overlay fade
-                    window.location.href = 'thank-you.html';
-                }, 1000); // Wait for 1 second after fading out overlay
-            }, 5000); // Wait for 5 seconds
+                // After fade, redirect to the thank-you page
+                window.location.href = 'thank-you.html';
+            }, 1000); // Wait for 1 second after fading out overlay
         });
     </script>
 </body>
