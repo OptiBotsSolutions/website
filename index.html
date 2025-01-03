@@ -18,13 +18,14 @@
             background-color: white;
             z-index: 9999;
             opacity: 1;
-            transition: opacity 2s ease-in-out;
+            pointer-events: none; /* Allow interactions with the page */
+            transition: opacity 1s ease-in-out; /* Faster fade effect */
         }
 
         /* Initially hide the page content with opacity */
         body {
             opacity: 0;
-            transition: opacity 2s ease-in-out;
+            transition: opacity 1s ease-in-out; /* Faster fade-in */
         }
 
         /* Show the content after the page has loaded */
@@ -84,7 +85,7 @@
                 setTimeout(function() {
                     // Redirect to the thank you page after the overlay fade
                     window.location.href = 'thank-you.html';
-                }, 2000); // Wait for 2 seconds after fading out overlay
+                }, 1000); // Wait for 1 second after fading out overlay
             }, 5000); // Wait for 5 seconds
         });
     </script>
