@@ -18,14 +18,14 @@
             background-color: white;
             z-index: 9999;
             opacity: 1;
-            pointer-events: none; /* Allow interactions with the page */
-            transition: opacity 1s ease-in-out; /* Faster fade effect */
+            pointer-events: none; /* Disable interactions with the overlay */
+            transition: opacity 1s ease-in-out; /* Fade effect */
         }
 
         /* Initially hide the page content with opacity */
         body {
             opacity: 0;
-            transition: opacity 1s ease-in-out; /* Faster fade-in */
+            transition: opacity 1s ease-in-out; /* Fade-in effect */
         }
 
         /* Show the content after the page has loaded */
@@ -33,7 +33,7 @@
             opacity: 1;
         }
 
-        /* Fade out effect for overlay when page loads */
+        /* Fade-out effect for overlay when page loads */
         .fade-overlay.fade-out {
             opacity: 0;
         }
@@ -69,23 +69,24 @@
         // Add fade-in effect when the page loads
         window.addEventListener('load', function() {
             document.body.classList.add('loaded');
+            // Allow the fade-out to start after the page has finished loading
             setTimeout(function() {
                 document.getElementById('fadeOverlay').classList.add('fade-out');
-            }, 100); // Allow the page to load and fade-in before the overlay starts fading out
+            }, 500); // Allow the page to load and fade-in before the overlay starts fading out
         });
 
         // Handle form submission and page transition after 5 seconds
         document.querySelector('#contactForm').addEventListener('submit', function(event) {
             event.preventDefault(); // Prevent form from submitting immediately
 
-            // Fade the page content back into white before redirecting
+            // Apply fade-out to the overlay when the form is submitted
             document.getElementById('fadeOverlay').classList.add('fade-out');
 
             // Wait for 5 seconds, then redirect
             setTimeout(function() {
                 // After fade, redirect to the thank-you page
                 window.location.href = 'thank-you.html';
-            }, 1000); // Wait for 1 second after fading out overlay
+            }, 5000); // Wait for 5 seconds before redirecting
         });
     </script>
 </body>
