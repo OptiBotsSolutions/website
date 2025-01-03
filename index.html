@@ -24,7 +24,7 @@
                 <input name="mobilephone" type="tel" placeholder="Your Phone Number" pattern="^[0-9+\-]*$" title="Phone number must contain only numbers, +, and hyphens">
                 <textarea name="message" placeholder="Your Message &nbsp;*" rows="4" required></textarea>
                 <input name="hs_lead_status" style="display:none;" type="text" value="New">
-                <button type="submit">Send Message</button>
+                <button name="submitbutton" type="submit">Send Message</button>
             </form>
             <br>
             <p>&copy; OptiBots Solutions Since 2023. All rights reserved.</p>
@@ -33,7 +33,7 @@
 
     <script>
         document.querySelector('form').addEventListener('submit', function(event) {
-            Array.from(form.elements).forEach(element => element.disabled = true);
+            document.querySelector('button[name="submitbutton"]').style.display = 'none';
             document.body.style.cursor = 'wait';
             setTimeout(function() {
                 window.location.href = '';
