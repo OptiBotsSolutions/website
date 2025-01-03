@@ -6,39 +6,6 @@
     <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
     <link rel="stylesheet" href="styles.css">
     <title>OptiBots Solutions</title>
-
-    <style>
-        /* Full-page overlay with white background for fade effect */
-        .fade-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: white;
-            z-index: 9999;
-            opacity: 1;
-            pointer-events: none; /* Disable interactions with the overlay initially */
-            transition: opacity 1s ease-in-out; /* Fade effect */
-        }
-
-        /* Initially hide the page content with opacity */
-        body {
-            opacity: 0;
-            transition: opacity 1s ease-in-out; /* Fade-in effect */
-        }
-
-        /* Show the content after the page has loaded */
-        body.loaded {
-            opacity: 1;
-        }
-
-        /* Fade-out effect for overlay after form submission */
-        .fade-overlay.fade-out {
-            opacity: 0;
-            pointer-events: none; /* Allow interactions after fade-out */
-        }
-    </style>
 </head>
 <body>
     <div class="fade-overlay" id="fadeOverlay"></div>
@@ -48,7 +15,6 @@
             <img src="./images/logo.png" alt="OptiBots Solutions Logo">
         </div>
     </header>
-
     <section class="contact">
         <div class="contact-container">
             <h2>Contact Us</h2>
@@ -65,30 +31,5 @@
             <p>&copy; OptiBots Solutions Since 2023. All rights reserved.</p>
         </div>
     </section>
-
-    <script>
-        // Add fade-in effect when the page loads
-        window.addEventListener('load', function() {
-            document.body.classList.add('loaded');
-            // Allow the fade-out to start after the page has finished loading
-            setTimeout(function() {
-                document.getElementById('fadeOverlay').classList.add('fade-out');
-            }, 500); // Allow the page to load and fade-in before the overlay starts fading out
-        });
-
-        // Handle form submission and page transition after 5 seconds
-        document.querySelector('#contactForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent form from submitting immediately
-
-            // Apply fade-out to the overlay when the form is submitted
-            document.getElementById('fadeOverlay').classList.add('fade-out');
-
-            // Wait for 5 seconds, then redirect
-            setTimeout(function() {
-                // After fade, redirect to the thank-you page
-                window.location.href = 'thank-you.html';
-            }, 5000); // Wait for 5 seconds before redirecting
-        });
-    </script>
 </body>
 </html>
